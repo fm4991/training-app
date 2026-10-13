@@ -18,9 +18,14 @@ interface Props {
   onDiscard(): void;
 }
 
+/** How long the Undo button stays after Done / Next / Skip rest. */
+const UNDO_MS = 5000;
+
 export function Player({ plan, run, steps, settings, onChange, onFinish, onExit, onDiscard }: Props) {
   const [now, setNow] = useState(Date.now());
   const [sheet, setSheet] = useState<'info' | 'video' | 'menu' | 'list'>();
+  // The state before the last manual advance, so an accidental tap or swipe can be undone.
+  const [undo, setUndo] = useState<{ run: R.RunState; until: number }>();
   const lastBeepSecond = useRef<number>();
   const touch = useRef<{ x: number; y: number }>();
   const runRef = useRef(run);
@@ -78,8 +83,21 @@ export function Player({ plan, run, steps, settings, onChange, onFinish, onExit,
     lastBeepSecond.current = undefined;
     onChange(fn());
   };
-  const onNext = () => go(() => R.next(run, steps, s, Date.now()));
-  const onBack = () => go(() => R.back(run, steps, s, Date.now()));
+  const onNext = () => {
+    setUndo({ run, until: Date.now() + UNDO_MS });
+    go(() => R.next(run, steps, s, Date.now()));
+  };
+  const onBack = () => {
+    setUndo(undefined);
+    go(() => R.back(run, steps, s, Date.now()));
+  };
+  // Restores the step as it was, and its clock keeps running as if Done was never pressed.
+  const onUndo = () => {
+    if (!undo) return;
+    setUndo(undefined);
+    go(() => undo.run);
+  };
+  const undoLeft = undo ? undo.until - now : 0;
 
   const timed = step.duration !== undefined;
   const remaining = R.remainingMs(run, step, now);
@@ -99,7 +117,7 @@ export function Player({ plan, run, steps, settings, onChange, onFinish, onExit,
     const dx = e.changedTouches[0].clientX - touch.current.x;
     const dy = e.changedTouches[0].clientY - touch.current.y;
     touch.current = undefined;
-    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) (dx < 0 ? onNext : onBack)();
+    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) (dx < 0 ? onNext : undoLeft > 0 ? onUndo : onBack)();
   };
 
   return (
@@ -180,14 +198,20 @@ export function Player({ plan, run, steps, settings, onChange, onFinish, onExit,
         )}
       </main>
 
-      {nextEx && (
-        <div class="next-up">
-          <span class="muted">Next:</span> {nextEx.name}
-          {sideLabel(nextEx) ? ` (${sideLabel(nextEx)})` : ''} · {target(nextEx)}
-          {nextEx.round !== step.round || nextEx.blockIndex !== step.blockIndex ? (
-            <span class="muted small"> {nextEx.blockIndex !== step.blockIndex ? `· ${nextEx.blockTitle}` : `· round ${nextEx.round}`}</span>
-          ) : null}
-        </div>
+      {undoLeft > 0 ? (
+        <button class="btn undo" onClick={onUndo}>
+          Undo <span class="muted">· {Math.ceil(undoLeft / 1000)}</span>
+        </button>
+      ) : (
+        nextEx && (
+          <div class="next-up">
+            <span class="muted">Next:</span> {nextEx.name}
+            {sideLabel(nextEx) ? ` (${sideLabel(nextEx)})` : ''} · {target(nextEx)}
+            {nextEx.round !== step.round || nextEx.blockIndex !== step.blockIndex ? (
+              <span class="muted small"> {nextEx.blockIndex !== step.blockIndex ? `· ${nextEx.blockTitle}` : `· round ${nextEx.round}`}</span>
+            ) : null}
+          </div>
+        )
       )}
 
       <footer class="controls">
@@ -247,6 +271,7 @@ export function Player({ plan, run, steps, settings, onChange, onFinish, onExit,
                   class={[i === run.index && 'current', run.completed.includes(i) && 'done', st.kind === 'rest' && 'rest'].filter(Boolean).join(' ')}
                   onClick={() => {
                     setSheet(undefined);
+                    setUndo(undefined);
                     go(() => R.jumpTo(run, steps, i, s, Date.now()));
                   }}
                 >
