@@ -489,6 +489,95 @@ input[type='radio'] {
   min-height: 64px;
   font-size: 1.3rem;
 }
+/* Groups that only matter in landscape; in portrait their children flow in .player-main. */
+.player-core,
+.player-extra {
+  display: contents;
+}
+
+/* Phone in landscape: exercise + timer on the left, details and controls on the right, no scrolling. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .player {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 36%);
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      'progress progress'
+      'top top'
+      'core extra'
+      'core next'
+      'core controls';
+    column-gap: 16px;
+    padding: env(safe-area-inset-top) max(var(--gutter), env(safe-area-inset-right)) env(safe-area-inset-bottom) max(var(--gutter), env(safe-area-inset-left));
+  }
+  .progress {
+    grid-area: progress;
+  }
+  .player-top {
+    grid-area: top;
+  }
+  .player-top .btn {
+    min-height: 40px;
+    padding-block: 4px;
+  }
+  .player-where {
+    padding: 4px;
+  }
+  .player-main {
+    display: contents;
+  }
+  .player-core,
+  .player-extra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+    min-height: 0;
+    overflow-y: auto;
+    touch-action: pan-y;
+  }
+  .player-core {
+    grid-area: core;
+  }
+  .player-extra {
+    grid-area: extra;
+  }
+  .player-extra .note {
+    margin: 0;
+  }
+  .exercise-name {
+    font-size: clamp(1.4rem, 8vh, 2.4rem);
+  }
+  .huge {
+    font-size: clamp(3rem, 30vh, 8rem);
+  }
+  .target.huge {
+    font-size: clamp(2.5rem, 22vh, 6rem);
+  }
+  .player-img {
+    max-width: 100%;
+    max-height: 26vh;
+  }
+  .next-up {
+    grid-area: next;
+    margin: 6px 0;
+    padding: 6px 10px;
+  }
+  .controls {
+    grid-area: controls;
+    padding-bottom: 8px;
+  }
+  .controls .round,
+  .controls .next {
+    min-height: 56px;
+  }
+  .controls .round {
+    width: 56px;
+  }
+}
+
 .step-list {
   list-style: none;
   padding: 0;

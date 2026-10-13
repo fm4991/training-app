@@ -131,7 +131,7 @@ export function Player({ plan, run, steps, settings, onChange, onFinish, onExit,
 
       <main class="player-main" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         {isRest ? (
-          <>
+          <div class="player-core">
             <div class="label">{step.name}</div>
             <div class="timer huge">{clock((remaining ?? 0) / 1000)}</div>
             <div class="row">
@@ -139,39 +139,43 @@ export function Player({ plan, run, steps, settings, onChange, onFinish, onExit,
                 +15 s
               </button>
             </div>
-          </>
+          </div>
         ) : (
           <>
-            {side && <div class={`side side-${step.side}`}>{side}</div>}
-            <h1 class="exercise-name" onClick={() => setSheet('info')}>
-              {step.name}
-              {exercise && <span class="info-dot">ⓘ</span>}
-            </h1>
-            {timed ? (
-              prep ? (
-                <div class="prep">
-                  <div class="label">Get ready</div>
-                  <div class="timer huge">{Math.ceil(prep / 1000)}</div>
-                  <div class="muted">{target(step)}</div>
-                </div>
+            <div class="player-core">
+              {side && <div class={`side side-${step.side}`}>{side}</div>}
+              <h1 class="exercise-name" onClick={() => setSheet('info')}>
+                {step.name}
+                {exercise && <span class="info-dot">ⓘ</span>}
+              </h1>
+              {timed ? (
+                prep ? (
+                  <div class="prep">
+                    <div class="label">Get ready</div>
+                    <div class="timer huge">{Math.ceil(prep / 1000)}</div>
+                    <div class="muted">{target(step)}</div>
+                  </div>
+                ) : (
+                  <div class={`timer huge ${run.clock.phase === 'paused' ? 'paused' : ''}`}>{clock((remaining ?? 0) / 1000)}</div>
+                )
               ) : (
-                <div class={`timer huge ${run.clock.phase === 'paused' ? 'paused' : ''}`}>{clock((remaining ?? 0) / 1000)}</div>
-              )
-            ) : (
-              <div class="target huge">{target(step)}</div>
-            )}
-            <div class="chips center">
-              {step.intensity && <span class="chip strong">{step.intensity}</span>}
-              {step.tempo && <span class="chip">{step.tempo}</span>}
-              {step.load && <span class="chip load">🎒 {loadLabel(step.load)}</span>}
+                <div class="target huge">{target(step)}</div>
+              )}
+              <div class="chips center">
+                {step.intensity && <span class="chip strong">{step.intensity}</span>}
+                {step.tempo && <span class="chip">{step.tempo}</span>}
+                {step.load && <span class="chip load">🎒 {loadLabel(step.load)}</span>}
+              </div>
             </div>
-            {step.note && <p class="note">{step.note}</p>}
-            {image?.type === 'image' && <img class="player-img" src={image.src} alt={image.alt ?? step.name} onClick={() => setSheet('info')} />}
-            {hasVideo && (
-              <button class="btn" onClick={() => setSheet('video')}>
-                ▶ Video
-              </button>
-            )}
+            <div class="player-extra">
+              {step.note && <p class="note">{step.note}</p>}
+              {image?.type === 'image' && <img class="player-img" src={image.src} alt={image.alt ?? step.name} onClick={() => setSheet('info')} />}
+              {hasVideo && (
+                <button class="btn" onClick={() => setSheet('video')}>
+                  ▶ Video
+                </button>
+              )}
+            </div>
           </>
         )}
       </main>
