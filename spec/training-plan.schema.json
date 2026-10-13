@@ -1,0 +1,306 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://training-player/spec/training-plan.schema.json",
+  "title": "Training plan",
+  "description": "A multi-week training program for the Training Player app. See spec/SPEC.md.",
+  "type": "object",
+  "required": ["specVersion", "id", "title", "startDate", "environments", "exercises", "phases", "days"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "specVersion": { "const": 1 },
+    "id": { "$ref": "#/definitions/id" },
+    "title": { "type": "string", "minLength": 1 },
+    "subtitle": { "type": "string" },
+    "description": { "type": "string", "description": "Markdown-lite: paragraphs and **bold**." },
+    "startDate": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Local date (YYYY-MM-DD) of the first day of week 1. Should be a Monday."
+    },
+    "notes": { "type": "array", "items": { "type": "string" } },
+    "equipment": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/definitions/id" },
+      "additionalProperties": { "$ref": "#/definitions/equipment" }
+    },
+    "environments": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/environment" }
+    },
+    "exercises": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/definitions/id" },
+      "additionalProperties": { "$ref": "#/definitions/exercise" }
+    },
+    "blocks": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/definitions/id" },
+      "additionalProperties": { "$ref": "#/definitions/block" }
+    },
+    "phases": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/phase" }
+    },
+    "days": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/day" }
+    }
+  },
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "kebab-case identifier"
+    },
+    "seconds": { "type": "number", "minimum": 0 },
+    "progression": {
+      "type": "object",
+      "description": "Value = base + perWeek * (week - fromWeek), clamped to [min, max]. Weeks before fromWeek use base.",
+      "required": ["base", "fromWeek", "perWeek"],
+      "additionalProperties": false,
+      "properties": {
+        "base": { "type": "number", "minimum": 0 },
+        "fromWeek": { "type": "integer", "minimum": 1 },
+        "perWeek": { "type": "number" },
+        "max": { "type": "number", "minimum": 0 },
+        "min": { "type": "number", "minimum": 0 }
+      }
+    },
+    "num": {
+      "oneOf": [{ "type": "number", "minimum": 0 }, { "$ref": "#/definitions/progression" }]
+    },
+    "equipment": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["id", "name", "equipment"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "equipment": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/id" },
+          "description": "Equipment available in this environment. An empty list means bodyweight only (travel)."
+        }
+      }
+    },
+    "media": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["type", "src"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "image" },
+            "src": {
+              "type": "string",
+              "pattern": "^(data:image/(png|jpeg|gif|webp|svg\\+xml);base64,|https://)",
+              "description": "Base64 data URI (data:image/png;base64,...) or an https URL."
+            },
+            "alt": { "type": "string" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "url"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "youtube" },
+            "url": {
+              "type": "string",
+              "pattern": "^https://(www\\.|m\\.)?(youtube\\.com|youtu\\.be|youtube-nocookie\\.com)/"
+            },
+            "start": { "type": "integer", "minimum": 0, "description": "Start offset in seconds." },
+            "title": { "type": "string" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "url"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "link" },
+            "url": { "type": "string", "pattern": "^https://" },
+            "title": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "exercise": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "instructions": { "type": "string" },
+        "cues": { "type": "array", "items": { "type": "string" } },
+        "equipment": { "type": "array", "items": { "$ref": "#/definitions/id" } },
+        "media": { "type": "array", "items": { "$ref": "#/definitions/media" } },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["exercise"],
+            "additionalProperties": false,
+            "properties": {
+              "exercise": { "$ref": "#/definitions/id" },
+              "when": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "load": {
+      "type": "object",
+      "required": ["kg"],
+      "additionalProperties": false,
+      "properties": {
+        "kg": { "$ref": "#/definitions/num" },
+        "kgMax": { "type": "number", "minimum": 0 },
+        "placement": { "enum": ["back", "thighs", "hips", "hands", "front"] },
+        "equipment": { "$ref": "#/definitions/id", "description": "Equipment that provides the load, e.g. backpack." }
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": ["exercise"],
+      "additionalProperties": false,
+      "properties": {
+        "exercise": { "$ref": "#/definitions/id" },
+        "label": { "type": "string" },
+        "reps": { "$ref": "#/definitions/num" },
+        "duration": { "$ref": "#/definitions/num", "description": "Seconds." },
+        "perSide": { "type": "boolean" },
+        "tempo": { "type": "string", "description": "Free text, e.g. \"3 s down, 1 s up\"." },
+        "intensity": { "type": "string", "description": "e.g. hard, easy, all-out." },
+        "load": { "$ref": "#/definitions/load" },
+        "equipment": { "type": "array", "items": { "$ref": "#/definitions/id" } },
+        "onlyRounds": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "minItems": 1 },
+        "note": { "type": "string" }
+      },
+      "not": { "required": ["reps", "duration"] }
+    },
+    "choice": {
+      "type": "object",
+      "required": ["choice"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string" },
+        "choice": { "type": "array", "minItems": 2, "items": { "$ref": "#/definitions/item" } }
+      }
+    },
+    "block": {
+      "type": "object",
+      "required": ["title", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "kind": { "enum": ["warmup", "main", "finish", "cooldown"] },
+        "rounds": { "$ref": "#/definitions/num" },
+        "restBetweenRounds": { "$ref": "#/definitions/num" },
+        "restBetweenItems": { "$ref": "#/definitions/num" },
+        "note": { "type": "string" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "if": { "required": ["choice"] },
+            "then": { "$ref": "#/definitions/choice" },
+            "else": { "$ref": "#/definitions/item" }
+          }
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "required": ["environment", "blocks"],
+      "additionalProperties": false,
+      "properties": {
+        "environment": { "$ref": "#/definitions/id" },
+        "phases": { "type": "array", "items": { "$ref": "#/definitions/id" }, "minItems": 1 },
+        "weeks": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "minItems": 1 },
+        "note": { "type": "string" },
+        "blocks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [{ "$ref": "#/definitions/id" }, { "$ref": "#/definitions/block" }]
+          }
+        }
+      }
+    },
+    "logField": {
+      "type": "object",
+      "required": ["id", "label", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "label": { "type": "string" },
+        "type": { "enum": ["number", "rpe", "boolean", "text"] },
+        "unit": { "type": "string" },
+        "target": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "environments": { "type": "array", "items": { "$ref": "#/definitions/id" } },
+        "autofill": {
+          "oneOf": [
+            { "enum": ["roundsCompleted", "maxLoadKg", "durationMinutes"] },
+            {
+              "type": "object",
+              "required": ["maxDuration"],
+              "additionalProperties": false,
+              "properties": { "maxDuration": { "$ref": "#/definitions/id" } }
+            }
+          ]
+        }
+      }
+    },
+    "phase": {
+      "type": "object",
+      "required": ["id", "name", "weeks"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "type": "string" },
+        "weeks": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Inclusive [firstWeek, lastWeek]."
+        },
+        "focus": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "day": {
+      "type": "object",
+      "required": ["weekday", "title", "sessions"],
+      "additionalProperties": false,
+      "properties": {
+        "weekday": { "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "why": { "type": "string" },
+        "log": { "type": "array", "items": { "$ref": "#/definitions/logField" } },
+        "sessions": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/session" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,1100 @@
+{
+  "$schema": "../spec/training-plan.schema.json",
+  "specVersion": 1,
+  "id": "heliski-2027",
+  "title": "Heliski Canada",
+  "subtitle": "18-week indoor plan · 30 min Mon–Fri",
+  "description": "8–10 runs a day for 7 days is won or lost on day 4+. The plan builds eccentric quad endurance, single-leg strength and an engine, then tapers so you arrive fresh.",
+  "startDate": "2026-09-14",
+  "notes": [
+    "Every session fits in 30 minutes including warm-up and finish. Weekends free.",
+    "After a 5-day hotel week, make the next home week's Mon/Wed heavy-backpack days and Tue longer; do not try to make up volume inside the hotel week.",
+    "Backpack: on the back for split squats, step-ups, step-downs, calf raises, lunges; on the thighs for wall sits; across the hips for bridges; never on jumps, hops or sprints.",
+    "Sunday check (60 s): 5 sessions done? Backpack kg, wall-sit seconds or circuit rounds higher than 3 weeks ago? Two flat weeks in a row means the plan changes.",
+    "Same session, same load, RPE dropping over 3 weeks: add load. RPE rising at the same load: you are under-recovered, no extra load.",
+    "RPE 1–10: 3–4 easy, could chat · 6–7 hard, 2–3 reps left · 8 very hard, 1 rep left · 9–10 failure (not in this plan)."
+  ],
+  "equipment": {
+    "backpack": { "name": "Backpack 8–15 kg", "description": "Filled with water bottles or books." },
+    "chair": { "name": "Sturdy chair", "description": "Test it first. Bed edge works for split squats." },
+    "wall": { "name": "Wall" },
+    "stairs": { "name": "Stairwell / bench", "description": "2 stairs or a bench for step-ups and step-downs." },
+    "rowerg": { "name": "RowErg" }
+  },
+  "environments": [
+    {
+      "id": "travel",
+      "name": "Hotel",
+      "description": "Bodyweight, everything in the room.",
+      "equipment": ["chair", "wall"]
+    },
+    {
+      "id": "home",
+      "name": "Home",
+      "description": "Backpack · stairwell · RowErg.",
+      "equipment": ["backpack", "chair", "wall", "stairs", "rowerg"]
+    }
+  ],
+  "phases": [
+    {
+      "id": "p1",
+      "name": "Foundation",
+      "weeks": [1, 4],
+      "focus": "Movement quality, controlled tempo, 2 reps short of failure.",
+      "notes": "Bodyweight or 8 kg. 60 s rest. Wall sit 45 s. Circuit 3 rounds."
+    },
+    {
+      "id": "p2",
+      "name": "Strength-endurance",
+      "weeks": [5, 10],
+      "focus": "Density up: same 4 rounds, rest cut to 30 s, 3 s eccentrics everywhere.",
+      "notes": "Pack 10–12 kg. Wall sit 60 s in week 5, +15 s per week, max 2 min. Circuit 4 rounds. Pistol progression."
+    },
+    {
+      "id": "p3",
+      "name": "Power + fatigue resistance",
+      "weeks": [11, 16],
+      "focus": "Plyometrics, working while already tired. Wed–Thu–Fri deliberately back-to-back.",
+      "notes": "Pack 15 kg on strength moves only. Jump lunges, hops, tuck jumps. Wall sit 3 min or single-leg. Circuit 4 rounds, 30 s rest. Strongly recommended: 3–4 resort ski days in December."
+    },
+    {
+      "id": "p4",
+      "name": "Taper",
+      "weeks": [17, 18],
+      "focus": "Arrive fresh, not \"one more workout\" tired.",
+      "notes": "3 rounds or fewer, same intensity, nothing new. Last hard session about 5 days before the first flight."
+    }
+  ],
+  "exercises": {
+    "jumping-jacks": { "name": "Jumping jacks" },
+    "leg-swings": { "name": "Leg swings", "instructions": "Front-to-back, hold a wall or chair for balance." },
+    "air-squat": { "name": "Air squats", "instructions": "Slow and controlled, full depth, heels down." },
+    "lunge": { "name": "Lunges" },
+    "single-leg-balance": { "name": "Single-leg balance", "instructions": "Stand on one leg, soft knee, hips level." },
+    "hip-circles": { "name": "Hip circles" },
+    "marching": { "name": "Marching in place" },
+    "easy-movement": {
+      "name": "Easy in-room movement",
+      "instructions": "Marching, step-jacks, slow chair step-ups. RPE 3–4, you can talk the whole time.",
+      "equipment": ["chair"]
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian split squat",
+      "instructions": "Rear foot on chair/bed. 3 s down, 1 s up. Front knee over the foot, torso upright. Home: backpack on the back.",
+      "cues": ["3 s down, 1 s up", "Front knee over the foot", "Torso upright"],
+      "equipment": ["chair"]
+    },
+    "step-up": {
+      "name": "Step-up",
+      "instructions": "Onto a chair (hotel) or 2 stairs/bench (home). Drive through the TOP leg, no push-off from the floor. Lower slowly.",
+      "cues": ["Drive through the top leg", "No push-off from the floor", "Lower slowly"],
+      "equipment": ["chair"]
+    },
+    "single-leg-glute-bridge": {
+      "name": "Single-leg glute bridge",
+      "instructions": "Heels close to the glutes, lower back flat, push through the heel. 1 s squeeze at the top, hips level. Never with the pack on the back; home from phase 2 across the hips.",
+      "cues": ["Push through the heel", "1 s squeeze at the top", "Hips level"]
+    },
+    "calf-raise": {
+      "name": "Calf raise on an edge",
+      "instructions": "Forefoot on a step, thick book or bathroom step edge. 2 s down to a full stretch, 1 s hold at the top. Pressure through the big-toe ball. No edge: flat floor, 2 s pause at the top.",
+      "cues": ["2 s down to full stretch", "1 s hold at the top", "Pressure through the big-toe ball"]
+    },
+    "single-leg-calf-raise": {
+      "name": "Single-leg calf raise",
+      "instructions": "Like the calf raise on an edge, on one leg. 2 s down to a full stretch, 1 s hold at the top."
+    },
+    "pistol-progression": {
+      "name": "Pistol-squat progression",
+      "instructions": "Hold a door frame, lower on one leg as deep as you can control, other leg straight forward. Never with the pack.",
+      "cues": ["Hold the door frame", "Only as deep as you control", "Never with the pack"]
+    },
+    "jump-lunge": {
+      "name": "Jump lunges",
+      "instructions": "Switch legs in the air, land in a lunge. Land quietly. Never with the pack."
+    },
+    "single-leg-hop": {
+      "name": "Single-leg hops",
+      "instructions": "Small and quiet. Never with the pack."
+    },
+    "rowerg": {
+      "name": "RowErg",
+      "instructions": "Legs first, then lean, then arms. Drive through the heels. Hard = you could not talk. Easy = full recovery pace.",
+      "cues": ["Legs → lean → arms", "Drive through the heels"],
+      "equipment": ["rowerg"]
+    },
+    "stairwell": {
+      "name": "Stairwell: up easy, down slow",
+      "instructions": "Walk up easy. Walk down slowly on bent knees, 3 s per step, weight controlled by the standing leg. Do NOT jog down; the descent is the point.",
+      "cues": ["Up easy", "Down 3 s per step", "Bent knees"],
+      "equipment": ["stairs"]
+    },
+    "fast-chair-step-up": {
+      "name": "Fast chair step-ups",
+      "instructions": "Alternate legs, fast, full stand at the top. Burpees instead if the chair is shaky. Test the chair first.",
+      "equipment": ["chair"],
+      "alternatives": [{ "exercise": "burpee", "when": "the chair is shaky" }]
+    },
+    "burpee": { "name": "Burpees" },
+    "chair-step-down": {
+      "name": "Slow chair step-downs",
+      "instructions": "Stand on the chair on one leg, lower the free heel to the floor over 3 s, tap, back up. This replaces the stairwell descent; do not rush it.",
+      "cues": ["3 s lowering", "Tap the heel", "Do not rush"],
+      "equipment": ["chair"]
+    },
+    "step-down": {
+      "name": "Step-down",
+      "instructions": "Stand on the step on one leg, lower the free heel to the floor over 3 s, tap, drive back up. Knee tracks over the foot, hips level.",
+      "cues": ["3 s lowering", "Tap, drive back up", "Knee over the foot"],
+      "equipment": ["chair"]
+    },
+    "wall-sit": {
+      "name": "Wall sit",
+      "instructions": "Thighs parallel, knees over ankles, weight in the heels, back and head on the wall. The set ends when thighs rise above parallel; log that time. Pack on the thighs, not the back.",
+      "cues": ["Thighs parallel", "Knees over ankles", "Back and head on the wall"],
+      "equipment": ["wall"],
+      "media": [
+        {
+          "type": "image",
+          "alt": "Wall sit stick figure",
+          "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTAwIj48ZyBzdHJva2U9IiMxMTEiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIj48bGluZSB4MT0iMzAiIHkxPSI4IiB4Mj0iMzAiIHkyPSI5MCIgc3Ryb2tlPSIjOTk5IiBzdHJva2Utd2lkdGg9IjIiLz48bGluZSB4MT0iMTAiIHkxPSI5MCIgeDI9IjExMCIgeTI9IjkwIiBzdHJva2U9IiM5OTkiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSIzNiIgeTE9IjMwIiB4Mj0iMzYiIHkyPSI1OCIvPjxsaW5lIHgxPSIzNiIgeTE9IjU4IiB4Mj0iNjYiIHkyPSI1OCIvPjxsaW5lIHgxPSI2NiIgeTE9IjU4IiB4Mj0iNjYiIHkyPSI4OCIvPjxsaW5lIHgxPSIzNiIgeTE9IjM4IiB4Mj0iNTgiIHkyPSI0NCIvPjwvZz48Y2lyY2xlIGN4PSIzNiIgY3k9IjIwIiByPSI4IiBmaWxsPSIjMTExIi8+PHJlY3QgeD0iNDQiIHk9IjQ5IiB3aWR0aD0iMTgiIGhlaWdodD0iOCIgZmlsbD0iI2QwNjAyMCIvPjwvc3ZnPg=="
+        }
+      ]
+    },
+    "single-leg-wall-sit": {
+      "name": "Single-leg wall sit",
+      "instructions": "Wall sit position, extend one leg straight. 30–45 s per side. Closer to skiing than a loaded two-leg sit.",
+      "equipment": ["wall"]
+    },
+    "eccentric-single-leg-squat": {
+      "name": "Eccentric single-leg squat to chair",
+      "instructions": "Lower on one leg over 3 s until seated, stand up on two legs. Arms forward for balance.",
+      "cues": ["3 s down on one leg", "Stand up on two", "Arms forward"],
+      "equipment": ["chair"]
+    },
+    "tuck-jump": {
+      "name": "Tuck jumps",
+      "instructions": "Knees to chest, land soft and quiet. Loud landings mean stop. Never with the pack."
+    },
+    "skater-hop": {
+      "name": "Skater hops",
+      "instructions": "Push off sideways, land on one leg, hold 1 s, knee over toes, no wobble."
+    },
+    "lateral-lunge": {
+      "name": "Lateral lunge",
+      "instructions": "Big step to the side, sit back into that hip, other leg straight. Chest up."
+    },
+    "side-plank": {
+      "name": "Side plank",
+      "instructions": "Straight line ear–hip–ankle, hips high, top arm to the ceiling."
+    },
+    "copenhagen-plank": {
+      "name": "Copenhagen plank",
+      "instructions": "Side plank with the top foot on a chair or bed, bottom leg bent. Squeeze the inner thigh.",
+      "equipment": ["chair"]
+    },
+    "jump-squat": {
+      "name": "Jump squats",
+      "instructions": "Sit back, explode up, land soft and silent into a quarter squat. Loud landing means you're done."
+    },
+    "lateral-hop": {
+      "name": "Lateral hops",
+      "instructions": "Hop side to side over a line or towel, both feet, fast and quiet, knees soft."
+    },
+    "reverse-lunge": {
+      "name": "Reverse lunges",
+      "instructions": "Step back, rear knee to just above the floor, front knee over the foot. Alternate legs."
+    },
+    "mountain-climber": {
+      "name": "Mountain climbers",
+      "instructions": "Plank, drive knees to chest fast, hips low."
+    },
+    "stair-sprint": {
+      "name": "Stair sprint",
+      "instructions": "Sprint up the stairwell, walk down. Never with the pack.",
+      "equipment": ["stairs"],
+      "alternatives": [{ "exercise": "mountain-climber", "when": "no stairwell" }]
+    },
+    "hollow-hold": {
+      "name": "Hollow hold",
+      "instructions": "Lower back pressed into the floor, shoulders and legs lifted, arms overhead. If the back arches, raise the legs."
+    },
+    "plank": {
+      "name": "Plank",
+      "instructions": "Forearms, straight line ear–hip–ankle, glutes squeezed, no sagging hips."
+    },
+    "dead-bug": {
+      "name": "Dead bug",
+      "instructions": "Lower back pressed flat. Opposite arm and leg lower slowly (2–3 s), exhale on the way out. If the back lifts, shorten the range."
+    },
+    "deep-squat-hold": {
+      "name": "Deep squat hold",
+      "instructions": "Heels down, hips loose, knees pushed out with the elbows. Full ankle bend matters more than any stretch."
+    },
+    "calf-stretch": { "name": "Calf stretch", "instructions": "Hands on the wall, back leg straight, heel down." }
+  },
+  "blocks": {
+    "warmup-standard": {
+      "title": "Warm-up",
+      "kind": "warmup",
+      "items": [
+        { "exercise": "jumping-jacks", "duration": 60 },
+        { "exercise": "leg-swings", "reps": 20, "perSide": true },
+        { "exercise": "air-squat", "reps": 15, "tempo": "slow" },
+        { "exercise": "lunge", "reps": 10, "perSide": true },
+        { "exercise": "single-leg-balance", "duration": 30, "perSide": true }
+      ]
+    },
+    "finish-core": {
+      "title": "Finish",
+      "kind": "finish",
+      "items": [
+        { "exercise": "plank", "duration": 45 },
+        { "exercise": "side-plank", "duration": 30, "perSide": true },
+        { "exercise": "dead-bug", "reps": 10, "perSide": true, "tempo": "2–3 s lowering" },
+        { "exercise": "deep-squat-hold", "duration": 90, "note": "Heels down." }
+      ]
+    },
+    "finish-mobility": {
+      "title": "Finish",
+      "kind": "finish",
+      "items": [
+        { "exercise": "deep-squat-hold", "duration": 90, "note": "Heels down." },
+        { "exercise": "calf-stretch", "duration": 45, "perSide": true }
+      ]
+    },
+    "thu-warmup": {
+      "title": "Warm-up",
+      "kind": "warmup",
+      "items": [
+        { "exercise": "leg-swings", "reps": 10, "perSide": true },
+        { "exercise": "hip-circles", "reps": 10 },
+        { "exercise": "air-squat", "reps": 10 }
+      ]
+    },
+    "thu-stability-2": {
+      "title": "Stability",
+      "rounds": 2,
+      "items": [
+        { "exercise": "skater-hop", "reps": 12, "perSide": true, "tempo": "hold each landing 1 s" },
+        { "exercise": "lateral-lunge", "reps": 10, "perSide": true },
+        { "exercise": "single-leg-balance", "label": "Single-leg balance, eyes closed", "duration": 30, "perSide": true },
+        { "exercise": "side-plank", "duration": 30, "perSide": true },
+        { "exercise": "copenhagen-plank", "duration": 20, "perSide": true, "note": "Top foot on bed or chair." }
+      ]
+    },
+    "thu-stability-1": {
+      "title": "Stability",
+      "rounds": 1,
+      "items": [
+        { "exercise": "skater-hop", "reps": 12, "perSide": true, "tempo": "hold each landing 1 s" },
+        { "exercise": "lateral-lunge", "reps": 10, "perSide": true },
+        { "exercise": "single-leg-balance", "label": "Single-leg balance, eyes closed", "duration": 30, "perSide": true },
+        { "exercise": "side-plank", "duration": 30, "perSide": true },
+        { "exercise": "copenhagen-plank", "duration": 20, "perSide": true, "note": "Top foot on bed or chair." }
+      ]
+    },
+    "thu-cardio-hotel": {
+      "title": "Easy cardio",
+      "kind": "cooldown",
+      "items": [{ "exercise": "easy-movement", "duration": 600, "intensity": "RPE 3–4, easy", "note": "Keep it easy: Wednesday and Friday are the hard days." }]
+    },
+    "thu-cardio-home": {
+      "title": "Easy cardio",
+      "kind": "cooldown",
+      "items": [{ "exercise": "rowerg", "label": "Easy rowing", "duration": 900, "intensity": "RPE 3–4, easy", "note": "Pace you could talk through the whole time." }]
+    }
+  },
+  "days": [
+    {
+      "weekday": "mon",
+      "title": "Single-leg strength",
+      "why": "Skiing is one leg at a time. Weak single-leg strength means quads and knees do the hips' job and quit on day 5.",
+      "log": [
+        { "id": "kg", "label": "Backpack kg", "type": "number", "unit": "kg", "autofill": "maxLoadKg", "environments": ["home"] },
+        { "id": "rounds", "label": "Rounds", "type": "number", "autofill": "roundsCompleted" },
+        { "id": "rpe", "label": "RPE", "type": "rpe", "target": [6, 7] }
+      ],
+      "sessions": [
+        {
+          "environment": "travel",
+          "phases": ["p1"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 60,
+              "items": [
+                { "exercise": "bulgarian-split-squat", "reps": 8, "perSide": true, "tempo": "3 s down", "note": "Rear foot on chair." },
+                { "exercise": "step-up", "label": "Chair step-up", "reps": 10, "perSide": true },
+                { "exercise": "single-leg-glute-bridge", "reps": 12, "perSide": true, "tempo": "1 s squeeze" },
+                { "exercise": "calf-raise", "reps": 15, "tempo": "2 s down, 1 s hold", "note": "Off a book or bathroom step edge." }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p1"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 60,
+              "items": [
+                { "exercise": "bulgarian-split-squat", "reps": 8, "perSide": true, "tempo": "3 s down", "load": { "kg": 8, "placement": "back", "equipment": "backpack" }, "note": "Rear foot on chair." },
+                { "exercise": "step-up", "label": "Step-up onto 2 stairs or bench", "reps": 10, "perSide": true, "equipment": ["stairs"], "load": { "kg": 8, "placement": "back", "equipment": "backpack" } },
+                { "exercise": "single-leg-glute-bridge", "reps": 12, "perSide": true, "tempo": "1 s squeeze", "note": "No pack." },
+                { "exercise": "calf-raise", "reps": 15, "tempo": "2 s down, 1 s hold", "equipment": ["stairs"], "load": { "kg": 8, "placement": "back", "equipment": "backpack" } }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p2"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "bulgarian-split-squat", "reps": 8, "perSide": true, "tempo": "3 s down" },
+                { "exercise": "step-up", "label": "Chair step-up", "reps": 8, "perSide": true },
+                { "exercise": "pistol-progression", "reps": 4, "perSide": true, "note": "Holding a door frame." },
+                { "exercise": "single-leg-glute-bridge", "reps": 10, "perSide": true, "onlyRounds": [1, 3] },
+                { "exercise": "single-leg-calf-raise", "reps": 10, "perSide": true, "onlyRounds": [2, 4], "note": "Off a book edge." }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p2"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "bulgarian-split-squat", "reps": 8, "perSide": true, "tempo": "3 s down", "load": { "kg": 10, "kgMax": 12, "placement": "back", "equipment": "backpack" } },
+                { "exercise": "step-up", "label": "Step-up onto 2 stairs or bench", "reps": 8, "perSide": true, "equipment": ["stairs"], "load": { "kg": 10, "kgMax": 12, "placement": "back", "equipment": "backpack" } },
+                { "exercise": "pistol-progression", "reps": 4, "perSide": true, "note": "Holding a door frame, no pack." },
+                { "exercise": "single-leg-glute-bridge", "reps": 10, "perSide": true, "onlyRounds": [1, 3], "load": { "kg": 10, "kgMax": 12, "placement": "hips", "equipment": "backpack" } },
+                { "exercise": "single-leg-calf-raise", "reps": 10, "perSide": true, "onlyRounds": [2, 4], "equipment": ["stairs"], "note": "On step edge, no pack." }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p3"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "bulgarian-split-squat", "reps": 8, "perSide": true, "tempo": "3 s down" },
+                { "exercise": "pistol-progression", "reps": 4, "perSide": true, "note": "Holding a door frame." },
+                { "exercise": "jump-lunge", "reps": 6, "perSide": true, "note": "Land quietly." },
+                { "exercise": "single-leg-hop", "reps": 8, "perSide": true },
+                { "exercise": "single-leg-glute-bridge", "reps": 10, "perSide": true, "onlyRounds": [1, 3] },
+                { "exercise": "single-leg-calf-raise", "reps": 10, "perSide": true, "onlyRounds": [2, 4], "note": "Off a book edge." }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p3"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "bulgarian-split-squat", "reps": 8, "perSide": true, "tempo": "3 s down", "load": { "kg": 15, "placement": "back", "equipment": "backpack" } },
+                { "exercise": "pistol-progression", "reps": 4, "perSide": true, "note": "No pack." },
+                { "exercise": "jump-lunge", "reps": 6, "perSide": true, "note": "No pack." },
+                { "exercise": "single-leg-hop", "reps": 8, "perSide": true, "note": "No pack." },
+                { "exercise": "single-leg-glute-bridge", "reps": 10, "perSide": true, "onlyRounds": [1, 3], "load": { "kg": 15, "placement": "hips", "equipment": "backpack" } },
+                { "exercise": "single-leg-calf-raise", "reps": 10, "perSide": true, "onlyRounds": [2, 4], "equipment": ["stairs"], "note": "On step edge." }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p4"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 3,
+              "restBetweenRounds": 60,
+              "note": "No jumps, nothing new.",
+              "items": [
+                { "exercise": "bulgarian-split-squat", "reps": 8, "perSide": true },
+                { "exercise": "step-up", "label": "Chair step-up", "reps": 8, "perSide": true },
+                { "exercise": "pistol-progression", "reps": 3, "perSide": true, "note": "Holding a door frame." },
+                { "exercise": "single-leg-glute-bridge", "reps": 10, "perSide": true }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p4"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 3,
+              "restBetweenRounds": 60,
+              "note": "Last hard session about 5 days before the first flight.",
+              "items": [
+                { "exercise": "bulgarian-split-squat", "reps": 8, "perSide": true, "load": { "kg": 10, "placement": "back", "equipment": "backpack" } },
+                { "exercise": "step-up", "label": "Step-up onto 2 stairs", "reps": 8, "perSide": true, "equipment": ["stairs"], "load": { "kg": 10, "placement": "back", "equipment": "backpack" } },
+                { "exercise": "pistol-progression", "reps": 3, "perSide": true, "note": "No pack." },
+                { "exercise": "single-leg-glute-bridge", "reps": 10, "perSide": true, "note": "No pack." }
+              ]
+            },
+            "finish-core"
+          ]
+        }
+      ]
+    },
+    {
+      "weekday": "tue",
+      "title": "Conditioning",
+      "subtitle": "Engine + controlled descents",
+      "why": "8–10 runs a day needs an aerobic engine; slow, controlled lowering is the closest bodyweight thing to the eccentric load of a long powder run.",
+      "log": [
+        { "id": "rounds", "label": "Rounds", "type": "number", "autofill": "roundsCompleted", "environments": ["travel"] },
+        { "id": "row-metres", "label": "Total row metres", "type": "number", "unit": "m", "environments": ["home"] },
+        { "id": "rpe", "label": "RPE", "type": "rpe", "target": [7, 8] }
+      ],
+      "sessions": [
+        {
+          "environment": "travel",
+          "phases": ["p1"],
+          "blocks": [
+            {
+              "title": "Warm-up",
+              "kind": "warmup",
+              "items": [
+                { "exercise": "marching", "duration": 60 },
+                { "exercise": "step-up", "label": "Slow chair step-ups", "duration": 60, "note": "Check the chair is stable." },
+                { "exercise": "air-squat", "reps": 10 },
+                { "exercise": "leg-swings", "reps": 10, "perSide": true }
+              ]
+            },
+            {
+              "title": "Intervals",
+              "rounds": 8,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "fast-chair-step-up", "duration": 60, "note": "Alternating legs. Burpees if the chair is shaky." },
+                { "exercise": "chair-step-down", "duration": 30, "tempo": "3 s per lowering" }
+              ]
+            },
+            "finish-mobility"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p2"],
+          "blocks": [
+            {
+              "title": "Warm-up",
+              "kind": "warmup",
+              "items": [
+                { "exercise": "marching", "duration": 60 },
+                { "exercise": "step-up", "label": "Slow chair step-ups", "duration": 60, "note": "Check the chair is stable." },
+                { "exercise": "air-squat", "reps": 10 },
+                { "exercise": "leg-swings", "reps": 10, "perSide": true }
+              ]
+            },
+            {
+              "title": "Intervals",
+              "rounds": 10,
+              "restBetweenRounds": 20,
+              "items": [
+                { "exercise": "fast-chair-step-up", "duration": 60, "note": "Alternating legs. Burpees if the chair is shaky." },
+                { "exercise": "chair-step-down", "duration": 30, "tempo": "3 s per lowering" }
+              ]
+            },
+            "finish-mobility"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p3"],
+          "blocks": [
+            {
+              "title": "Warm-up",
+              "kind": "warmup",
+              "items": [
+                { "exercise": "marching", "duration": 60 },
+                { "exercise": "step-up", "label": "Slow chair step-ups", "duration": 60, "note": "Check the chair is stable." },
+                { "exercise": "air-squat", "reps": 10 },
+                { "exercise": "leg-swings", "reps": 10, "perSide": true }
+              ]
+            },
+            {
+              "title": "Intervals",
+              "rounds": 10,
+              "restBetweenRounds": 20,
+              "items": [
+                { "exercise": "fast-chair-step-up", "label": "Explosive chair step-ups", "duration": 60, "note": "Switch legs at the top with a small hop." },
+                { "exercise": "chair-step-down", "duration": 30, "tempo": "3 s per lowering" }
+              ]
+            },
+            "finish-mobility"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p4"],
+          "blocks": [
+            {
+              "title": "Warm-up",
+              "kind": "warmup",
+              "items": [
+                { "exercise": "marching", "duration": 60 },
+                { "exercise": "step-up", "label": "Slow chair step-ups", "duration": 60, "note": "Check the chair is stable." },
+                { "exercise": "air-squat", "reps": 10 },
+                { "exercise": "leg-swings", "reps": 10, "perSide": true }
+              ]
+            },
+            {
+              "title": "Intervals",
+              "rounds": 6,
+              "restBetweenRounds": 30,
+              "note": "Keep RPE at 6 or below.",
+              "items": [
+                { "exercise": "fast-chair-step-up", "label": "Chair step-ups", "duration": 60, "intensity": "moderate pace" },
+                { "exercise": "chair-step-down", "duration": 30, "tempo": "3 s per lowering" }
+              ]
+            },
+            "finish-mobility"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p1"],
+          "blocks": [
+            {
+              "title": "Warm-up",
+              "kind": "warmup",
+              "items": [{ "exercise": "rowerg", "label": "Easy rowing", "duration": 180, "intensity": "easy", "note": "Build the stroke rate." }]
+            },
+            {
+              "title": "RowErg intervals",
+              "rounds": 6,
+              "items": [
+                { "exercise": "rowerg", "duration": 120, "intensity": "hard" },
+                { "exercise": "rowerg", "duration": 60, "intensity": "easy" }
+              ]
+            },
+            {
+              "title": "Stairwell",
+              "items": [{ "exercise": "stairwell", "duration": 300, "note": "No backpack." }]
+            },
+            "finish-mobility"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p2"],
+          "blocks": [
+            {
+              "title": "Warm-up",
+              "kind": "warmup",
+              "items": [{ "exercise": "rowerg", "label": "Easy rowing", "duration": 180, "intensity": "easy", "note": "Build the stroke rate." }]
+            },
+            {
+              "title": "RowErg intervals",
+              "rounds": 3,
+              "items": [
+                { "exercise": "rowerg", "duration": 240, "intensity": "hard" },
+                { "exercise": "rowerg", "duration": 120, "intensity": "easy" }
+              ]
+            },
+            {
+              "title": "Stairwell",
+              "items": [{ "exercise": "stairwell", "duration": 300, "note": "No backpack." }]
+            },
+            "finish-mobility"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p3"],
+          "blocks": [
+            {
+              "title": "Warm-up",
+              "kind": "warmup",
+              "items": [{ "exercise": "rowerg", "label": "Easy rowing", "duration": 180, "intensity": "easy", "note": "Build the stroke rate." }]
+            },
+            {
+              "title": "RowErg intervals",
+              "rounds": 8,
+              "items": [
+                { "exercise": "rowerg", "duration": 60, "intensity": "all-out" },
+                { "exercise": "rowerg", "duration": 60, "intensity": "easy" }
+              ]
+            },
+            {
+              "title": "Stairwell",
+              "items": [{ "exercise": "stairwell", "duration": 300, "load": { "kg": 15, "placement": "back", "equipment": "backpack" } }]
+            },
+            "finish-mobility"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p4"],
+          "blocks": [
+            {
+              "title": "Warm-up",
+              "kind": "warmup",
+              "items": [{ "exercise": "rowerg", "label": "Easy rowing", "duration": 180, "intensity": "easy", "note": "Build the stroke rate." }]
+            },
+            {
+              "title": "RowErg intervals",
+              "rounds": 4,
+              "note": "Keep RPE at 6–7.",
+              "items": [
+                { "exercise": "rowerg", "duration": 120, "intensity": "hard" },
+                { "exercise": "rowerg", "duration": 120, "intensity": "easy" }
+              ]
+            },
+            {
+              "title": "Stairwell",
+              "items": [{ "exercise": "stairwell", "duration": 300, "note": "No backpack." }]
+            },
+            "finish-mobility"
+          ]
+        }
+      ]
+    },
+    {
+      "weekday": "wed",
+      "title": "Eccentric + isometric",
+      "subtitle": "The heli-week muscles",
+      "why": "Eccentric quad load and long isometric holds are what fail on day 4+ of a heli week. This is the most important session of the week.",
+      "log": [
+        { "id": "wallsit", "label": "Wall sit seconds (best set)", "type": "number", "unit": "s", "autofill": { "maxDuration": "wall-sit" } },
+        { "id": "kg", "label": "Backpack kg", "type": "number", "unit": "kg", "autofill": "maxLoadKg", "environments": ["home"] },
+        { "id": "rpe", "label": "RPE", "type": "rpe", "target": [6, 7] }
+      ],
+      "sessions": [
+        {
+          "environment": "travel",
+          "phases": ["p1"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 60,
+              "items": [
+                { "exercise": "step-down", "label": "Step-downs off a chair", "reps": 8, "perSide": true, "tempo": "3 s lowering, tap, drive up" },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "eccentric-single-leg-squat", "reps": 6, "perSide": true, "tempo": "3 s down on one leg, up on two" }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p1"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 60,
+              "items": [
+                { "exercise": "step-down", "label": "Step-downs off 2 stairs or bench", "reps": 8, "perSide": true, "equipment": ["stairs"], "tempo": "3 s lowering, tap, drive up" },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "eccentric-single-leg-squat", "reps": 6, "perSide": true, "tempo": "3 s down on one leg, up on two" }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p2"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "step-down", "label": "Step-downs off a chair", "reps": 8, "perSide": true, "tempo": "3 s lowering" },
+                { "exercise": "wall-sit", "duration": { "base": 60, "fromWeek": 5, "perWeek": 15, "max": 120 }, "onlyRounds": [1, 2, 3], "note": "Rounds 1–3 only. +15 s each week, max 2 min." },
+                { "exercise": "eccentric-single-leg-squat", "reps": 6, "perSide": true, "tempo": "3 s down on one leg, up on two" }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p2"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 4,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "step-down", "label": "Step-downs off 2 stairs", "reps": 8, "perSide": true, "equipment": ["stairs"], "tempo": "3 s lowering", "load": { "kg": 8, "placement": "back", "equipment": "backpack" } },
+                { "exercise": "wall-sit", "duration": { "base": 60, "fromWeek": 5, "perWeek": 15, "max": 120 }, "onlyRounds": [1, 2, 3], "load": { "kg": 8, "placement": "thighs", "equipment": "backpack" }, "note": "Rounds 1–3 only. +15 s each week, max 2 min." },
+                { "exercise": "eccentric-single-leg-squat", "reps": 6, "perSide": true, "tempo": "3 s down on one leg, up on two", "note": "No pack." }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p3"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 3,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "step-down", "label": "Step-downs off a chair", "reps": 8, "perSide": true, "tempo": "3 s lowering" },
+                {
+                  "label": "Wall sit variant",
+                  "choice": [
+                    { "exercise": "wall-sit", "duration": 180 },
+                    { "exercise": "single-leg-wall-sit", "duration": 40, "perSide": true, "note": "30–45 s per side." }
+                  ]
+                },
+                { "exercise": "eccentric-single-leg-squat", "reps": 6, "perSide": true },
+                { "exercise": "tuck-jump", "reps": 8, "note": "Land quietly." }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p3"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 3,
+              "restBetweenRounds": 30,
+              "items": [
+                { "exercise": "step-down", "label": "Step-downs off 2 stairs", "reps": 8, "perSide": true, "equipment": ["stairs"], "tempo": "3 s lowering", "load": { "kg": 15, "placement": "back", "equipment": "backpack" } },
+                {
+                  "label": "Wall sit variant",
+                  "choice": [
+                    { "exercise": "wall-sit", "duration": 180, "load": { "kg": 15, "placement": "thighs", "equipment": "backpack" } },
+                    { "exercise": "single-leg-wall-sit", "duration": 40, "perSide": true, "note": "30–45 s per side, no pack." }
+                  ]
+                },
+                { "exercise": "eccentric-single-leg-squat", "reps": 6, "perSide": true, "note": "No pack." },
+                { "exercise": "tuck-jump", "reps": 8, "note": "No pack. Land quietly." }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p4"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 3,
+              "restBetweenRounds": 60,
+              "note": "No jumps.",
+              "items": [
+                { "exercise": "step-down", "label": "Step-downs off a chair", "reps": 8, "perSide": true, "tempo": "3 s lowering" },
+                { "exercise": "wall-sit", "duration": 90 },
+                { "exercise": "eccentric-single-leg-squat", "reps": 6, "perSide": true }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p4"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Main",
+              "rounds": 3,
+              "restBetweenRounds": 60,
+              "note": "No backpack. No jumps.",
+              "items": [
+                { "exercise": "step-down", "label": "Step-downs off 2 stairs", "reps": 8, "perSide": true, "equipment": ["stairs"], "tempo": "3 s lowering" },
+                { "exercise": "wall-sit", "duration": 90 },
+                { "exercise": "eccentric-single-leg-squat", "reps": 6, "perSide": true }
+              ]
+            },
+            "finish-core"
+          ]
+        }
+      ]
+    },
+    {
+      "weekday": "thu",
+      "title": "Lateral stability + easy cardio",
+      "subtitle": "Recovery day",
+      "why": "Deep snow loads the knee sideways on every turn. Stability protects it. The cardio is EASY on purpose: this day exists so Wednesday and Friday don't break you.",
+      "log": [
+        { "id": "done", "label": "Done", "type": "boolean" },
+        { "id": "rpe", "label": "RPE", "type": "rpe", "target": [3, 4] }
+      ],
+      "sessions": [
+        { "environment": "travel", "phases": ["p1", "p2", "p3"], "blocks": ["thu-warmup", "thu-stability-2", "thu-cardio-hotel"] },
+        { "environment": "home", "phases": ["p1", "p2", "p3"], "blocks": ["thu-warmup", "thu-stability-2", "thu-cardio-home"] },
+        {
+          "environment": "travel",
+          "phases": ["p4"],
+          "note": "RPE 3.",
+          "blocks": [
+            "thu-warmup",
+            "thu-stability-1",
+            {
+              "title": "Easy cardio",
+              "kind": "cooldown",
+              "items": [{ "exercise": "easy-movement", "duration": 600, "intensity": "RPE 3", "note": "Marching, step-jacks." }]
+            }
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p4"],
+          "note": "RPE 3.",
+          "blocks": [
+            "thu-warmup",
+            "thu-stability-1",
+            {
+              "title": "Easy cardio",
+              "kind": "cooldown",
+              "items": [{ "exercise": "rowerg", "label": "Easy rowing", "duration": 900, "intensity": "RPE 3" }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekday": "fri",
+      "title": "Ski circuit",
+      "subtitle": "Simulate a long run",
+      "why": "No rest between exercises simulates a 10-minute powder run: legs burning, still skiing clean. Landing quality is the whole point of the jumps.",
+      "log": [
+        { "id": "rounds", "label": "Circuit rounds completed", "type": "number", "autofill": "roundsCompleted" },
+        { "id": "rpe", "label": "RPE", "type": "rpe", "target": [8, 8] }
+      ],
+      "sessions": [
+        {
+          "environment": "travel",
+          "phases": ["p1"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Circuit",
+              "rounds": 3,
+              "restBetweenRounds": 90,
+              "note": "45 s per exercise, no rest between exercises.",
+              "items": [
+                { "exercise": "jump-squat", "duration": 45 },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "lateral-hop", "duration": 45 },
+                { "exercise": "reverse-lunge", "duration": 45 },
+                { "exercise": "mountain-climber", "duration": 45 },
+                { "exercise": "hollow-hold", "duration": 45 }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p1"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Circuit",
+              "rounds": 3,
+              "restBetweenRounds": 90,
+              "note": "45 s per exercise, no rest between exercises.",
+              "items": [
+                { "exercise": "jump-squat", "duration": 45 },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "lateral-hop", "duration": 45 },
+                { "exercise": "reverse-lunge", "duration": 45 },
+                { "exercise": "stair-sprint", "duration": 45 },
+                { "exercise": "hollow-hold", "duration": 45 }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p2"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Circuit",
+              "rounds": 4,
+              "restBetweenRounds": 60,
+              "note": "45 s per exercise, no rest between exercises.",
+              "items": [
+                { "exercise": "jump-squat", "duration": 45 },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "lateral-hop", "duration": 45 },
+                { "exercise": "reverse-lunge", "duration": 45 },
+                { "exercise": "mountain-climber", "duration": 45 },
+                { "exercise": "hollow-hold", "duration": 45 }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p2"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Circuit",
+              "rounds": 4,
+              "restBetweenRounds": 60,
+              "note": "45 s per exercise, no rest between exercises.",
+              "items": [
+                { "exercise": "jump-squat", "duration": 45 },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "lateral-hop", "duration": 45 },
+                { "exercise": "reverse-lunge", "duration": 45 },
+                { "exercise": "stair-sprint", "duration": 45 },
+                { "exercise": "hollow-hold", "duration": 45 }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p3"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Circuit",
+              "rounds": 4,
+              "restBetweenRounds": 30,
+              "note": "45 s per exercise, no rest between exercises.",
+              "items": [
+                { "exercise": "jump-squat", "duration": 45 },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "lateral-hop", "duration": 45 },
+                { "exercise": "reverse-lunge", "duration": 45 },
+                { "exercise": "mountain-climber", "duration": 45 },
+                { "exercise": "hollow-hold", "duration": 45 }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p3"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Circuit",
+              "rounds": 4,
+              "restBetweenRounds": 30,
+              "note": "45 s per exercise, no rest between exercises. Never the pack on jumps or sprints.",
+              "items": [
+                { "exercise": "jump-squat", "duration": 45 },
+                { "exercise": "wall-sit", "duration": 45, "load": { "kg": 15, "placement": "thighs", "equipment": "backpack" } },
+                { "exercise": "lateral-hop", "duration": 45 },
+                { "exercise": "reverse-lunge", "duration": 45, "load": { "kg": 15, "placement": "back", "equipment": "backpack" } },
+                { "exercise": "stair-sprint", "duration": 45 },
+                { "exercise": "hollow-hold", "duration": 45 }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "travel",
+          "phases": ["p4"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Circuit",
+              "rounds": 2,
+              "restBetweenRounds": 90,
+              "note": "Nothing hard in the last 5 days before the trip.",
+              "items": [
+                { "exercise": "jump-squat", "duration": 45 },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "lateral-hop", "duration": 45 },
+                { "exercise": "reverse-lunge", "duration": 45 },
+                { "exercise": "mountain-climber", "duration": 45 },
+                { "exercise": "hollow-hold", "duration": 45 }
+              ]
+            },
+            "finish-core"
+          ]
+        },
+        {
+          "environment": "home",
+          "phases": ["p4"],
+          "blocks": [
+            "warmup-standard",
+            {
+              "title": "Circuit",
+              "rounds": 2,
+              "restBetweenRounds": 90,
+              "note": "No backpack. Nothing hard in the last 5 days before the trip.",
+              "items": [
+                { "exercise": "jump-squat", "duration": 45 },
+                { "exercise": "wall-sit", "duration": 45 },
+                { "exercise": "lateral-hop", "duration": 45 },
+                { "exercise": "reverse-lunge", "duration": 45 },
+                { "exercise": "stair-sprint", "duration": 45 },
+                { "exercise": "hollow-hold", "duration": 45 }
+              ]
+            },
+            "finish-core"
+          ]
+        }
+      ]
+    }
+  ]
+}
