@@ -23,16 +23,16 @@
   },
   "environments": [
     {
-      "id": "travel",
-      "name": "Hotel",
-      "description": "Bodyweight, everything in the room.",
-      "equipment": ["chair", "wall"]
-    },
-    {
       "id": "home",
       "name": "Home",
       "description": "Backpack · stairwell · RowErg.",
       "equipment": ["backpack", "chair", "wall", "stairs", "rowerg"]
+    },
+    {
+      "id": "travel",
+      "name": "Hotel",
+      "description": "Bodyweight, everything in the room.",
+      "equipment": ["chair", "wall"]
     }
   ],
   "phases": [

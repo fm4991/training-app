@@ -135,7 +135,7 @@ The value is `base + perWeek × (week − fromWeek)`, clamped to `min`/`max`. We
 ]
 ```
 
-The user switches environment with a toggle. A session's needed equipment is collected from its exercises, item overrides and loads, and shown as chips before starting. The validator warns when a session needs equipment its environment doesn't list, e.g. a RowErg in the hotel.
+The user switches environment with a toggle; the first environment in the list is the default. A session's needed equipment is collected from its exercises, item overrides and loads, and shown as chips before starting. The validator warns when a session needs equipment its environment doesn't list, e.g. a RowErg in the hotel.
 
 ## Logging
 

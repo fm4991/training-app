@@ -212,9 +212,19 @@ export function Today({ plan, settings, logs, run, selection, onSelect, onEnviro
       {phase?.notes && (
         <details class="card">
           <summary>
-            Phase {plan.phases.indexOf(phase) + 1}: {phase.name}
+            About this phase: {phase.name}
+            <div class="muted small">
+              Phase {plan.phases.indexOf(phase) + 1} of {plan.phases.length} · weeks {phase.weeks[0]}–{phase.weeks[1]}
+            </div>
           </summary>
-          <p>{phase.notes}</p>
+          {phase.focus && (
+            <p>
+              <strong>Focus:</strong> {phase.focus}
+            </p>
+          )}
+          <p>
+            <strong>Targets for these weeks:</strong> {phase.notes}
+          </p>
         </details>
       )}
       {plan.notes && plan.notes.length > 0 && (
