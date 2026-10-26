@@ -8,8 +8,9 @@ export function unlockAudio(): void {
     // Mix with music instead of pausing it (Safari 17+).
     const session = (navigator as Navigator & { audioSession?: { type: string } }).audioSession;
     if (session) session.type = 'ambient';
-    ctx ??= new AudioContext();
-    if (ctx.state === 'suspended') void ctx.resume();
+    if (!ctx || ctx.state === 'closed') ctx = new AudioContext();
+    // iOS reports 'interrupted' (not 'suspended') after a call, Siri, another app taking audio, or backgrounding.
+    if (ctx.state !== 'running') void ctx.resume();
     // A silent buffer fully unlocks output on older iOS versions.
     const src = ctx.createBufferSource();
     src.buffer = ctx.createBuffer(1, 1, 22050);
@@ -20,6 +21,15 @@ export function unlockAudio(): void {
   }
 }
 
+// An interrupted context only comes back from a user gesture, so retry on every tap once audio was unlocked.
+const relock = () => {
+  if (ctx && ctx.state !== 'running') unlockAudio();
+};
+for (const ev of ['touchend', 'click', 'keydown']) document.addEventListener(ev, relock, { capture: true, passive: true });
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && ctx && ctx.state !== 'running') void ctx.resume().catch(() => {});
+});
+
 export type Beep = 'tick' | 'go' | 'end';
 
 const BEEPS: Record<Beep, { freq: number; ms: number }> = {
@@ -29,8 +39,8 @@ const BEEPS: Record<Beep, { freq: number; ms: number }> = {
 };
 
 export function beep(kind: Beep): void {
-  if (!ctx) return;
-  if (ctx.state === 'suspended') void ctx.resume();
+  if (!ctx || ctx.state === 'closed') return;
+  if (ctx.state !== 'running') void ctx.resume().catch(() => {});
   const { freq, ms } = BEEPS[kind];
   const t = ctx.currentTime;
   const osc = ctx.createOscillator();
