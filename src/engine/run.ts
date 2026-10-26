@@ -56,7 +56,8 @@ function enterStep(run: RunState, steps: Step[], index: number, auto: boolean, s
   const step = steps[index];
   let clock: RunState['clock'];
   if (!isTimed(step)) clock = { phase: 'idle', at: now, accumulated: 0 };
-  else if (step.kind === 'exercise' && !auto && settings.prepSeconds > 0) {
+  // A rest already gives time to get ready; everything else (manual moves, exercise -> exercise) gets prep.
+  else if (step.kind === 'exercise' && settings.prepSeconds > 0 && !(auto && steps[run.index]?.kind === 'rest')) {
     clock = { phase: 'prep', at: now + settings.prepSeconds * 1000, accumulated: 0 };
   } else clock = { phase: 'running', at: now, accumulated: 0 };
   return { ...run, index, clock };

@@ -58,7 +58,7 @@ export function Player({ plan, run, steps, settings, onChange, onFinish, onExit,
       if (last !== 'none') {
         if (sound) {
           const s = steps[r.index];
-          beep(last === 'finished' || s?.kind === 'rest' ? 'end' : 'go');
+          beep(last === 'finished' || s?.kind === 'rest' || r.clock.phase === 'prep' ? 'end' : 'go');
         }
         lastBeepSecond.current = undefined;
         onChange(r);

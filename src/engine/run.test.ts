@@ -35,16 +35,27 @@ describe('run state machine', () => {
     expect(remainingMs(r.run, steps[0], T0 + 15_000)).toBe(50_000);
   });
 
-  it('auto-advances without prep and keeps exact timing across steps', () => {
+  it('auto-advances exercise -> exercise with prep and keeps exact timing across steps', () => {
     const { steps } = fridayCircuit();
     const circuitStart = steps.findIndex((s) => s.blockTitle === 'Circuit');
     let run: RunState = { ...fridayCircuit().run, index: circuitStart, clock: { phase: 'running', at: T0, accumulated: 0 } };
-    // 100 s later: jump squats (45) done, wall sit (45) done, 10 s into lateral hops.
-    run = settle(run, steps, T0 + 100_000);
+    // Jump squats 45, prep 5, wall sit 45, prep 5, then lateral hops.
+    run = settle(run, steps, T0 + 47_000);
+    expect(steps[run.index].exerciseId).toBe('wall-sit');
+    expect(run.clock.phase).toBe('prep');
+    run = settle(run, steps, T0 + 110_000);
     expect(steps[run.index].exerciseId).toBe('lateral-hop');
     expect(run.clock.phase).toBe('running');
-    expect(remainingMs(run, steps[run.index], T0 + 100_000)).toBe(35_000);
+    expect(remainingMs(run, steps[run.index], T0 + 110_000)).toBe(35_000);
     expect(run.elapsed[circuitStart + 1]).toBe(45);
+  });
+
+  it('auto-advances rest -> exercise without prep', () => {
+    const { steps, run } = fridayCircuit();
+    const rest = steps.findIndex((s, i) => s.kind === 'rest' && steps[i + 1]?.kind === 'exercise' && steps[i + 1].duration !== undefined);
+    const r = settle({ ...run, index: rest, clock: { phase: 'running', at: T0, accumulated: 0 } }, steps, T0 + steps[rest].duration! * 1000);
+    expect(r.index).toBe(rest + 1);
+    expect(r.clock.phase).toBe('running');
   });
 
   it('without auto-advance a finished exercise waits for Next', () => {
