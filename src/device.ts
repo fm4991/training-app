@@ -32,10 +32,12 @@ document.addEventListener('visibilitychange', () => {
 
 export type Beep = 'tick' | 'go' | 'end';
 
+// An octave above the old tones, in the 1.3-2.6 kHz range where hearing is most sensitive
+// and music has less energy, so the beeps cut through music playing alongside.
 const BEEPS: Record<Beep, { freq: number; ms: number }> = {
-  tick: { freq: 880, ms: 120 },
-  go: { freq: 1320, ms: 350 },
-  end: { freq: 660, ms: 500 },
+  tick: { freq: 1760, ms: 120 },
+  go: { freq: 2640, ms: 350 },
+  end: { freq: 1320, ms: 500 },
 };
 
 export function beep(kind: Beep): void {
@@ -45,10 +47,11 @@ export function beep(kind: Beep): void {
   const t = ctx.currentTime;
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
-  osc.type = 'sine';
+  // Square carries ~3 dB more energy than sine at the same peak, plus bright harmonics.
+  osc.type = 'square';
   osc.frequency.value = freq;
   gain.gain.setValueAtTime(0.0001, t);
-  gain.gain.exponentialRampToValueAtTime(0.6, t + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.9, t + 0.01);
   gain.gain.exponentialRampToValueAtTime(0.0001, t + ms / 1000);
   osc.connect(gain).connect(ctx.destination);
   osc.start(t);
